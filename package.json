@@ -26,7 +26,17 @@
         "type": "git",
         "url": "git+https://github.com/swherden/tiktok-scraper-nowatermarks.git"
     },
-    "keywords": [],
+    "keywords": [
+        "tiktok",
+        "scraper",
+        "tiktok-scraper",
+        "tiktok-scraper-nowatermarks",
+        "tiktok-scraper-no-watermarks",
+        "typescript",
+        "nodejs",
+        "api",
+        "node"
+    ],
     "author": "",
     "license": "OWN",
     "bugs": {

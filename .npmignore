@@ -2,3 +2,6 @@ src
 tsconfig.json
 tslint.json
 .prettierrc
+coverage
+copyStaticAssets.ts
+jestconfig.json
