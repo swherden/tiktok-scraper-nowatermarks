@@ -1,7 +1,7 @@
 {
     "name": "tiktok-scraper-nowatermarks",
     "version": "1.0.1",
-    "description": "",
+    "description": "Wrapper for TikFast to download videos without watermarks",
     "main": "dist/index.js",
     "scripts": {
         "prebuild": "tslint -c tslint.json -p tsconfig.json --fix && npm run format",
