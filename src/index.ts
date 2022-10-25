@@ -5,7 +5,7 @@
 
 export default async function getVideoWatermarkFree(
     videoUrl: string
-): Promise<string> {
+): Promise<Video> {
     return new Promise((resolve, reject) => {
         fetch('https://tikfast.net/en')
             .then((mainResponse) => {
@@ -109,4 +109,10 @@ export default async function getVideoWatermarkFree(
                 reject(err);
             });
     });
+}
+
+export interface Video {
+    url: string;
+    description: string;
+    vid: string;
 }
