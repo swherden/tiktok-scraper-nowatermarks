@@ -7,6 +7,9 @@ export default async function getVideoWatermarkFree(
     videoUrl: string
 ): Promise<Video> {
     return new Promise((resolve, reject) => {
+        if (!videoUrl || videoUrl.length === 0) {
+            reject(new Error('No video URL provided'));
+        }
         fetch('https://tikfast.net/en')
             .then((mainResponse) => {
                 const cookie = mainResponse.headers.get('set-cookie');
@@ -86,23 +89,27 @@ export default async function getVideoWatermarkFree(
                                                 const responseData =
                                                     downloadJson.data[0];
                                                 responseData.description =
-                                                    downloadLinkJson.data?.[0].description;
+                                                    downloadLinkJson.data[0].description;
                                                 resolve(responseData);
                                             } else {
                                                 reject(
-                                                    '[Fetching download] error'
+                                                    new Error(
+                                                        '[Fetching download] error'
+                                                    )
                                                 );
                                             }
                                         })
                                         .catch((err) => reject(err));
                                 }
                             } else {
-                                reject('[Fetching download-link] error');
+                                reject(
+                                    new Error('[Fetching download-link] error')
+                                );
                             }
                         })
                         .catch((err) => reject(err));
                 } else {
-                    reject('No cookie found');
+                    reject(new Error('No cookie found'));
                 }
             })
             .catch((err) => {

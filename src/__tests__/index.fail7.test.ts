@@ -3,7 +3,7 @@
  *  Created On : Tue Oct 25 2022
  *  File : index.test.ts
  *******************************************/
-import getVideoWatermarkFree, { Video } from '../';
+import getVideoWatermarkFree from '..';
 
 jest.spyOn(global, 'fetch').mockImplementation(
     jest.fn((url) => {
@@ -18,14 +18,8 @@ jest.spyOn(global, 'fetch').mockImplementation(
                 json: () => {
                     return Promise.resolve({
                         status: 'ok',
-                        code: 200,
-                        data: [
-                            {
-                                water_free_link:
-                                    'hgfhdgfdhgfdhgfdhgfdhgfdhgfdhg',
-                                description: 'test'
-                            }
-                        ]
+                        code: 400,
+                        data: null
                     });
                 }
             });
@@ -54,22 +48,11 @@ beforeEach(() => {
     jest.clearAllMocks();
 });
 
-test('getVideoWatermarkFree', async () => {
+test('Fetching no data error', async () => {
     const url = 'https://www.tiktok.com/@steuerfabi/video/7158115322103352582';
-    return getVideoWatermarkFree(url).then((video: Video) => {
-        expect(video).toBeDefined();
-        expect(video.url).toBeDefined();
-        expect(video.url).toBe('https://tikfast.net/download/1234567890');
-        expect(video.vid).toBeDefined();
-        expect(video.vid).toBe('1234567890');
-        expect(video.description).toBeDefined();
-        expect(video.description).toBe('test');
-        expect;
+    return getVideoWatermarkFree(url).catch((error) => {
+        expect(error).toBeDefined();
+        expect(error).toBeInstanceOf(Error);
+        expect(error.message).toBe('[Fetching download-link] error');
     });
-});
-
-test('getVideoWatermarkFree', async () => {
-    const url = 'https://www.tiktok.com/@steuerfabi/video/7158115322103352582';
-    const video = getVideoWatermarkFree(url);
-    expect(video).toBeInstanceOf(Promise<Video>);
 });
