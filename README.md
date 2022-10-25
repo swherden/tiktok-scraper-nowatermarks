@@ -9,7 +9,7 @@ Saves Tiktok videos without TikTok watermark. Use only for your own videos.
 ## Example usage
 
 ```ts
-import getVideoWatermarkFree, { Video }from tiktok-scraper-nowatermarks;
+import getVideoWatermarkFree, { Video } from tiktok-scraper-nowatermarks;
 
 const url = 'https://www.tiktok.com/@test/video/71581153224555456456';
 
