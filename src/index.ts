@@ -88,9 +88,17 @@ export default async function getVideoWatermarkFree(
                                             ) {
                                                 const responseData =
                                                     downloadJson.data[0];
-                                                responseData.description =
-                                                    downloadLinkJson.data[0].description;
-                                                resolve(responseData);
+                                                if (responseData) {
+                                                    responseData.description =
+                                                        downloadLinkJson.data[0].description;
+                                                    resolve(responseData);
+                                                } else {
+                                                    reject(
+                                                        new Error(
+                                                            '[Fetching download] No data found'
+                                                        )
+                                                    );
+                                                }
                                             } else {
                                                 reject(
                                                     new Error(
