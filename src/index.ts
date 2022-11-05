@@ -91,6 +91,8 @@ export default async function getVideoWatermarkFree(
                                                 if (responseData) {
                                                     responseData.description =
                                                         downloadLinkJson.data[0].description;
+                                                    responseData.cover_url =
+                                                        downloadLinkJson.data[0].cover_url;
                                                     resolve(responseData);
                                                 } else {
                                                     reject(
@@ -130,4 +132,5 @@ export interface Video {
     url: string;
     description: string;
     vid: string;
+    cover_url: string;
 }
