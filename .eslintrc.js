@@ -19,14 +19,6 @@ module.exports = {
         'import/no-unresolved': 'off',
         'import/extensions': 'off',
         'no-bitwise': 'off',
-        camelcase: 'off',
-        'lines-between-class-members': 'off',
-        'import/prefer-default-export': 'off',
-        'no-console': 'off',
-        'no-async-promise-executor': 'off',
-        'class-methods-use-this': 'off',
-        'no-restricted-syntax': 'off',
-        'no-plusplus': 'off',
     },
     overrides: [
         {
