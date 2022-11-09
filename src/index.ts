@@ -1,5 +1,4 @@
 /* eslint-disable no-restricted-syntax */
-import fetch from 'node-fetch';
 
 export interface Video {
     url: string;
