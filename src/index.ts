@@ -4,7 +4,7 @@
  *******************************************/
 
 export default async function getVideoWatermarkFree(
-    videoUrl: string
+    videoUrl: string,
 ): Promise<Video> {
     return new Promise((resolve, reject) => {
         if (!videoUrl || videoUrl.length === 0) {
@@ -30,13 +30,14 @@ export default async function getVideoWatermarkFree(
                             'x-requested-with': 'XMLHttpRequest',
                             cookie,
                             Referer: 'https://tikfast.net/en',
-                            'Referrer-Policy': 'strict-origin-when-cross-origin'
+                            'Referrer-Policy':
+                                'strict-origin-when-cross-origin',
                         },
                         body: `{"0": "${videoUrl}"}`,
-                        method: 'POST'
+                        method: 'POST',
                     })
                         .then((downloadLinkResponse) =>
-                            downloadLinkResponse.json()
+                            downloadLinkResponse.json(),
                         )
                         .then((downloadLinkJson) => {
                             if (
@@ -70,14 +71,14 @@ export default async function getVideoWatermarkFree(
                                                 Referer:
                                                     'https://tikfast.net/en',
                                                 'Referrer-Policy':
-                                                    'strict-origin-when-cross-origin'
+                                                    'strict-origin-when-cross-origin',
                                             },
                                             body: `{"url": "${link}"}`,
-                                            method: 'POST'
-                                        }
+                                            method: 'POST',
+                                        },
                                     )
                                         .then((downloadResponse) =>
-                                            downloadResponse.json()
+                                            downloadResponse.json(),
                                         )
                                         .then((downloadJson) => {
                                             if (
@@ -97,15 +98,15 @@ export default async function getVideoWatermarkFree(
                                                 } else {
                                                     reject(
                                                         new Error(
-                                                            '[Fetching download] No data found'
-                                                        )
+                                                            '[Fetching download] No data found',
+                                                        ),
                                                     );
                                                 }
                                             } else {
                                                 reject(
                                                     new Error(
-                                                        '[Fetching download] error'
-                                                    )
+                                                        '[Fetching download] error',
+                                                    ),
                                                 );
                                             }
                                         })
@@ -113,7 +114,7 @@ export default async function getVideoWatermarkFree(
                                 }
                             } else {
                                 reject(
-                                    new Error('[Fetching download-link] error')
+                                    new Error('[Fetching download-link] error'),
                                 );
                             }
                         })

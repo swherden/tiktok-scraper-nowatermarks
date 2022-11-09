@@ -1,19 +1,20 @@
-/******************************************
+/** ****************************************
  *  Author : Dr. Sebastian Herden
  *  Created On : Tue Oct 25 2022
  *  File : index.test.ts
- *******************************************/
-import getVideoWatermarkFree, { Video } from '../';
+ ****************************************** */
+import getVideoWatermarkFree, { Video } from '..';
 
 jest.spyOn(global, 'fetch').mockImplementation(
     jest.fn((url) => {
         if (url === 'https://tikfast.net/en') {
             return Promise.resolve({
                 headers: {
-                    get: () => 'cookie'
-                }
+                    get: () => 'cookie',
+                },
             });
-        } else if (url === 'https://tikfast.net/tik-download/download-link') {
+        }
+        if (url === 'https://tikfast.net/tik-download/download-link') {
             return Promise.resolve({
                 json: () => {
                     return Promise.resolve({
@@ -23,13 +24,14 @@ jest.spyOn(global, 'fetch').mockImplementation(
                             {
                                 water_free_link:
                                     'hgfhdgfdhgfdhgfdhgfdhgfdhgfdhg',
-                                description: 'test'
-                            }
-                        ]
+                                description: 'test',
+                            },
+                        ],
                     });
-                }
+                },
             });
-        } else if (url === 'https://tikfast.net/tik-download/download') {
+        }
+        if (url === 'https://tikfast.net/tik-download/download') {
             return Promise.resolve({
                 json: () => {
                     return Promise.resolve({
@@ -38,16 +40,15 @@ jest.spyOn(global, 'fetch').mockImplementation(
                         data: [
                             {
                                 url: 'https://tikfast.net/download/1234567890',
-                                vid: '1234567890'
-                            }
-                        ]
+                                vid: '1234567890',
+                            },
+                        ],
                     });
-                }
+                },
             });
-        } else {
-            return Promise.resolve({});
         }
-    }) as jest.Mock
+        return Promise.resolve({});
+    }) as jest.Mock,
 );
 
 beforeEach(() => {
@@ -64,7 +65,6 @@ test('getVideoWatermarkFree', async () => {
         expect(video.vid).toBe('1234567890');
         expect(video.description).toBeDefined();
         expect(video.description).toBe('test');
-        expect;
     });
 });
 
