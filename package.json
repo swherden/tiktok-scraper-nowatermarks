@@ -1,6 +1,6 @@
 {
     "name": "tiktok-scraper-nowatermarks",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "description": "Wrapper for TikFast to download videos without watermarks",
     "main": "./lib/index.js",
     "types": "lib/index.d.ts",
